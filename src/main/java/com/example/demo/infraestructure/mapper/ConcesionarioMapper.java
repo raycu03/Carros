@@ -28,13 +28,9 @@ public class ConcesionarioMapper implements MapperApiRest<Concesionario, Concesi
 
 	@Override
 	public ConcesionarioDto dominiodto(Concesionario i) {
-		ConcesionarioDto cc = new ConcesionarioDto();
-		cc.setCodigo(i.getCodigo().getCodigo());
-		cc.setNombre(i.getNombre().getNombre());
-		cc.setDireccion(i.getDireccion().getDireccion());
-		cc.setGerente(i.getGerente().getGerente());
-		carroMapper.dominiodto(i.getCarros());
-		return cc;
+			
+		return new ConcesionarioDto(i.getCodigo().getCodigo(), i.getNombre().getNombre(), i.getDireccion().getDireccion(),
+				i.getGerente().getGerente(),carroMapper.dominiodtoapi(i.getCarros()));
 	}
 	
 	@Override
@@ -46,13 +42,8 @@ public class ConcesionarioMapper implements MapperApiRest<Concesionario, Concesi
 
 	@Override
 	public ConcesionarioRest dominiodtoapi(Concesionario i) {
-		ConcesionarioRest cc = new ConcesionarioRest();
-		cc.setCodigo(i.getCodigo().getCodigo());
-		cc.setNombre(i.getNombre().getNombre());
-		cc.setDireccion(i.getDireccion().getDireccion());
-		cc.setGerente(i.getGerente().getGerente());
-		carroMapper.dominiodto(i.getCarros());
-		return cc;
+		return new ConcesionarioRest(i.getCodigo().getCodigo(), i.getNombre().getNombre(), i.getDireccion().getDireccion(),
+				i.getGerente().getGerente(),carroMapper.dominiodtoapi(i.getCarros()));
 	}
 
 

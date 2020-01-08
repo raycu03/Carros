@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dominio.model.Concesionario;
 import com.example.demo.dominio.services.ConcesionarioServices;
 import com.example.demo.exceptions.NotFound;
+import com.example.demo.infraestructure.mapper.CarroMapper;
 import com.example.demo.infraestructure.mapper.ConcesionarioMapper;
+import com.example.demo.infraestructure.repository.database.CarroRepository;
 import com.example.demo.infraestructure.repository.database.ConcesionarioRepository;
 import com.example.demo.shared.dominio.Codigo;
 
@@ -21,10 +23,15 @@ public class ConcesionarioAdapters implements ConcesionarioServices{
 	@Autowired
 	public ConcesionarioMapper concesionarioMapper;
 	
+	@Autowired
+	public CarroRepository CarroRepository;
+	
+	@Autowired
+	public CarroMapper carromapper;
+	
 	@Override
 	public Concesionario guardar(Concesionario concesionario) {
 		concesionarioRepository.save(concesionarioMapper.dominiodto(concesionario));
-		
 		return concesionario;
 		
 	}
